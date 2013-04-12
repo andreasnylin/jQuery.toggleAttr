@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>jQuery Toogle Attribute Plugin | Andreas Nylin</title>
+<meta charset="utf-8" />
+<meta name="Author" content="Andreas Nylin" />
+<meta name="description" content="Plugin for toggling the value of a HTML element attribute.">
+<meta name="keywords" content="html,jquery,attr,toggle,attribute,toggleattr,cycle,values">
+<style>
+
+body {
+	font: 14px/1.3 sans-serif;
+	color: #333;
+	margin: 20px 120px;
+}
+
+p {
+	max-width: 800px;
+}
+
+pre {
+	background: #eee;
+	font-size: 13px;
+	padding: 10px;
+	overflow: auto;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	tab-size: 2;
+}
+
+#an {
+	position: fixed;
+	top: 20px;
+	left: 20px;
+	background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAAgCAYAAACmaK65AAAACXBIWXMAAAsTAAALEwEAmpwYAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAACqUlEQVR42mI0NjZmIBKoAbEtENsDsTIQSwExHxAzM5APDgBxAIl6xKDucABiLSCWAWIhqDs+AvEzIL4LxAeB+DAQ3yLGUIAAYiFCjTUQZwKxJ9RCagJ+EtSqAHEaEAdBIwIbEARiBSC2AuJYIH4HxNuBeDoQH8VnOEAAMeGREwfiyUC8F4ijaRAIIPCHCDWgmC6App5SPIGADQhB3b4X6hdxXAoBAghXQJgD8S4gzgFidoaBA6DstxyI+4FYmgJz2KF+2QX1GwYACCBsAeEKxGuBWI9hYIE8EK8G4lAqmqkH9ZsrugRAAKEHhAkQL6Aw9KkBhKDusKKB2dJQs02QBQECCDkgRIB4NjQ5DiQAuakXWivQMsvNhvoZDAACCDkgaoHYgGHgQTAQJ9DBHgOon8EAIIBgAWEExKmDIBD4kB1HB5AK9TsDQADBAgJUonIOgoAAFYy6dLSPE+p3BoAAYoI2QHwHQSCAGncxA2AvyO8KAAEECgg75EJjAIESEJsOgL0gv9sBBBATjUtnUoAlEHMPkN0OAAEECgjVQRIQWgNotypAADENgnYDDMgOZFMeIIBAASEwSAJCcADt5gcIICaGwQNYB9JugAACBcT7QRIQ/wfSboAAAgXEc4ZRwAAQQKCAuDUaDAwMAAEECogDo8HAwAAQQKCAOATEr0d6QAAEECggHgLxppEeEAABBKs+pwLxt5EcEAABBAuI80A8ayQHBEAAITeoWoD43EgNCIAAQg6ItwyQEZsnIzEgAAIIvYkNShEJIzEwAAIIW18DNCsUBC03RgwACCBcna7TQOwOxBOB+PtICAiAAMLX+wQ1skBzjk5AvAiI39DAfhYcbLr3PgECiBjLT0AxaPLVhgGyLAA0Mw2aMeIjEJiEwHs09rsBCohPAAEGAAGrSjBQEUFjAAAAAElFTkSuQmCC');
+	display: block;
+    height: 32px;
+    width: 66px;
+}
+
+</style>
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="jquery.toggleattr.js"></script>
+<script>
+$(function() {
+
+	// Simple toggle attribute
+	$('#exampleBtn1').click(function() {
+		$('#exampleInput1').toggleAttr('disabled', 'disabled');
+	});
+
+	// Toggle two attribute values
+	$('#exampleBtn2').click(function() {
+		$('#example2Span').toggle().toggleAttr('aria-hidden', ['true', 'false']);
+	});
+
+	// Cycle several attribute values
+	$('#exampleBtn3').click(function() {
+		$('#exampleInput3').toggleAttr('value', ['A', 'B', 'C', 'D', 'E']);
+	});
+
+});
+</script>
+</head>
+<body>
+
+<header>
+	<a href="http://andreasnylin.com/" id="an"></a>
+	<h1>jQuery Toogle Attribute Plugin</h1>
+</header>
+
+<p>
+Plugin for toggling (the value of) a HTML element attribute. This can be done with jQuery's <i>attr</i>, <i>removeAttr</i>, <i>prop</i> methods but I felt I wanted a cleaner way of doing this. The plugin is used by calling the <i>toggleAttr</i> method of a jQuery element. The method takes two arguments:
+</p>
+
+<p>
+<b>The first argument</b> is the name of the attribute. Calling the <i>toggleAttr</i> method with only one argument will simply add or remove the attribute from the element.
+</p>
+
+<p>
+<b>The second argument</b> is a single value or an array with several values for the attribute. Calling the <i>toggleAttr</i> method with two arguments where the second argument is a single value like a string or a number will add or remove the attribute for the HTML element. Calling the <i>toggleAttr</i> method with two arguments where the second argument is an array will cycle through the values in the array and update the attribute with the next value.
+</p>
+
+<h2>Demo</h2>
+
+<strong>Simple toggle attribute</strong>
+<p>
+	<button id="exampleBtn1">Toggle disabled</button> <input id="exampleInput1" type="text" text="Click the button to disable/enable" />
+</p>
+
+<strong>Toggle two attribute values</strong>
+<p>
+	<button id="exampleBtn2">Toggle display</button> <span id="example2Span">Click the button to toggle display of this text</span>
+</p>
+
+<strong>Cycle several attribute values</strong>
+<p>
+	<button id="exampleBtn3">Cycle trough values</button> <input id="exampleInput3" type="text" value="A" /> 
+</p>
+
+<h2>The code</h2>
+
+<pre>//Simple toggle attribute
+$('#exampleBtn1').click(function() {
+	$('#exampleInput1').toggleAttr('disabled');
+	// or...
+	$('#exampleInput1').toggleAttr('disabled', 'disabled');
+});
+
+// Toggle two attribute values
+$('#exampleBtn2').click(function() {
+	$('#example2Span').toggle().toggleAttr('aria-hidden', ['true', 'false']);
+});
+
+// Cycle several attribute values
+$('#exampleBtn3').click(function() {
+	$('#exampleInput3').toggleAttr('value', ['A', 'B', 'C', 'D', 'E']);
+});</pre>
+
+</body>
+</html>
