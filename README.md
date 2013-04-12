@@ -7,15 +7,15 @@ Plugin for toggling (the value of) a HTML element attribute. This can be done wi
 
 **The second argument** is a single value or an array with several values for the attribute. Calling the *toggleAttr* method with two arguments where the second argument is a single value like a string or a number will add or remove the attribute for the HTML element. Calling the *toggleAttr* method with two arguments where the second argument is an array will cycle through the values in the array and update the attribute with the next value.
 
-Simple toggle attribute
---------------
+**Example code**
+```javascript
+// Simple toggle attribute
 $('#myElement').toggleAttr('disabled');
 $('#myElement').toggleAttr('disabled', 'disabled');
 
-Toggle two attribute values
---------------
+// Toggle two attribute values
 $('#myElement').toggleAttr('aria-hidden', ['true', 'false']);
 
-Cycle several attribute values
---------------
+// Cycle several attribute values
 $('#myElement').toggleAttr('value', ['A', 'B', 'C', 'D', 'E']);
+```
