@@ -27,10 +27,9 @@
 
         return this.each(function () {
             var $this = $(this),
-                hasValues = typeof attributeValues != 'undefined',
+                hasValues = typeof attributeValues !== 'undefined',
                 arrayValues = hasValues && attributeValues instanceof Array,
-                value = $this.attr(attribute),
-                newValue = null;
+                value = $this.attr(attribute);
 
             if(!hasValues && !$this.is('[' + attribute + ']')) {
                 $this.attr(attribute, attribute);
